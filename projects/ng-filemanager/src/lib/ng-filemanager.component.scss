@@ -1,0 +1,38 @@
+$input-file-btn-margin:5px !default;
+$input-file-icon-margin-right:5px !default;
+$input-file-item-margin-bottom: 5px !default;
+$input-file-item-font-size: 12px !default;
+
+:host {
+  position: relative;
+}
+
+.input-container {
+  @include clearfix;
+}
+
+.btn {
+  text-transform: none;
+}
+
+.file-item {
+  font-size: $input-file-item-font-size;
+  margin-bottom: $input-file-item-margin-bottom;
+}
+
+.buttons {
+  button {
+    display: inline-block;
+    margin-right: $input-file-btn-margin;
+    margin-top: $input-file-btn-margin;
+    margin-bottom: $input-file-btn-margin;
+
+    .icon {
+      margin-right: $input-file-icon-margin-right;
+    }
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+}

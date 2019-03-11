@@ -1,0 +1,36 @@
+<div class="input-container">
+  <input #fileInput class="form-control" type="file" [attr.multiple]="isMultiple ? 'multiple': null" (change)="onFileChange()"
+         [accept]="acceptedFileTypes" style="display:none;" />
+
+  <!--BUTTONS-->
+  <div class="buttons">
+    <button type="button" class="btn" [disabled]="isLoading" (click)="onOpenFileSelector()">
+      <span class="icon">
+        <i class="fa fa-folder-open"></i>
+      </span>
+      <span>
+        Select file(s)
+      </span>
+    </button>
+
+    <button type="button" class="btn" [disabled]="isLoading" (click)="onDeleteAllFiles()" *ngIf="isMultiple">
+      <span class="icon">
+        <i class="fa fa-trash"></i>
+      </span>
+      <span>Delete all</span>
+      <span *ngIf="totalFileSize > 0">&nbsp;({{totalFileSize | fileSize}})</span>
+    </button>
+  </div>
+
+  <!-- FILE LIST -->
+  <div class="file-list" *ngIf="files && files.length > 0">
+    <div *ngFor="let f of files" class="file-item">
+      <button class="btn-transparent clickable" type="button" (click)="onDeleteFile(f)" [disabled]="isLoading">
+        <i class="fa fa-trash">&times;</i>
+      </button>
+      <!-- <i class="fa" [ngClass]="getFileIcon(f)"></i> -->
+      <span title="{{ f.size | fileSize }} - {{f.title}}">{{f.title}}</span>
+      <span *ngIf="!isMultiple">&nbsp;({{ f.size | fileSize }})</span>
+    </div>
+  </div>
+</div>
