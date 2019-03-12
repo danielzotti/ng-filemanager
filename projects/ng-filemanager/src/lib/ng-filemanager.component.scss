@@ -1,38 +1,56 @@
-$input-file-btn-margin:5px !default;
-$input-file-icon-margin-right:5px !default;
-$input-file-item-margin-bottom: 5px !default;
-$input-file-item-font-size: 12px !default;
+$ng-filemanager-container-margin:5px;
+$ng-filemanager-btn-margin:5px;
+$ng-filemanager-icon-margin-right:5px;
+$ng-filemanager-item-file-margin-bottom: 5px;
+$ng-filemanager-item-file-font-size: 12px;
 
 :host {
   position: relative;
 }
 
-.input-container {
-  @include clearfix;
-}
+.ng-filemanager-container {
+  margin-top: $ng-filemanager-container-margin;
+  margin-bottom: $ng-filemanager-container-margin;
 
-.btn {
-  text-transform: none;
-}
-
-.file-item {
-  font-size: $input-file-item-font-size;
-  margin-bottom: $input-file-item-margin-bottom;
-}
-
-.buttons {
-  button {
-    display: inline-block;
-    margin-right: $input-file-btn-margin;
-    margin-top: $input-file-btn-margin;
-    margin-bottom: $input-file-btn-margin;
-
-    .icon {
-      margin-right: $input-file-icon-margin-right;
-    }
-
-    &:last-of-type {
-      margin-right: 0;
-    }
+  &::after {
+    display: block;
+    content: "";
+    clear: both;
   }
 }
+
+.ng-filemanager-input {
+  display: none;
+}
+
+.ng-filemanager-buttons {}
+
+.ng-filemanager-button {
+  display: inline-block;
+  margin-right: $ng-filemanager-btn-margin;
+  margin-top: $ng-filemanager-btn-margin;
+  margin-bottom: $ng-filemanager-btn-margin;
+
+  .ng-filemanager-button-icon {
+    margin-right: $ng-filemanager-icon-margin-right;
+  }
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+}
+
+.ng-filemanager-file-list {}
+
+.ng-filemanager-file-item {
+  font-size: $ng-filemanager-item-file-font-size;
+  margin-bottom: $ng-filemanager-item-file-margin-bottom;
+}
+
+.ng-filemanager-file-item-button {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.ng-filemanager-file-item-button-icon {}

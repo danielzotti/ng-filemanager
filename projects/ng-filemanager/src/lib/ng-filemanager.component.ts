@@ -16,7 +16,7 @@ const INPUT_FILE_CONTROL_VALIDATOR = {
 };
 
 @Component({
-  selector: 'dz-ng-filemanager',
+  selector: 'ng-filemanager',
   templateUrl: './ng-filemanager.component.html',
   styles: ['./ng-filemanager.component.scss'],
   providers: [INPUT_FILE_CONTROL_ACCESSOR, INPUT_FILE_CONTROL_VALIDATOR, FileSizePipe]

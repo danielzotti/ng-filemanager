@@ -1,10 +1,10 @@
-<div class="input-container">
-  <input #fileInput class="form-control" type="file" [attr.multiple]="isMultiple ? 'multiple': null" (change)="onFileChange()"
+<div class="ng-filemanager-container">
+  <input #fileInput class="ng-filemanager-input" type="file" [attr.multiple]="isMultiple ? 'multiple': null" (change)="onFileChange()"
          [accept]="acceptedFileTypes" style="display:none;" />
 
   <!--BUTTONS-->
-  <div class="buttons">
-    <button type="button" class="btn" [disabled]="isLoading" (click)="onOpenFileSelector()">
+  <div class="ng-filemanager-buttons">
+    <button type="button" class="ng-filemanager-button" [disabled]="isLoading" (click)="onOpenFileSelector()">
       <span class="icon">
         <i class="fa fa-folder-open"></i>
       </span>
@@ -13,8 +13,8 @@
       </span>
     </button>
 
-    <button type="button" class="btn" [disabled]="isLoading" (click)="onDeleteAllFiles()" *ngIf="isMultiple">
-      <span class="icon">
+    <button type="button" class="ng-filemanager-button" [disabled]="isLoading" (click)="onDeleteAllFiles()" *ngIf="isMultiple">
+      <span class="ng-filemanager-button-icon">
         <i class="fa fa-trash"></i>
       </span>
       <span>Delete all</span>
@@ -23,10 +23,12 @@
   </div>
 
   <!-- FILE LIST -->
-  <div class="file-list" *ngIf="files && files.length > 0">
-    <div *ngFor="let f of files" class="file-item">
-      <button class="btn-transparent clickable" type="button" (click)="onDeleteFile(f)" [disabled]="isLoading">
-        <i class="fa fa-trash">&times;</i>
+  <div class="ng-filemanager-file-list" *ngIf="files && files.length > 0">
+    <div *ngFor="let f of files" class="ng-filemanager-file-item">
+      <button class="ng-filemanager-file-item-button" type="button" (click)="onDeleteFile(f)" [disabled]="isLoading">
+        <span class="ng-filemanager-file-item-button-icon">
+          &times;
+        </span>
       </button>
       <!-- <i class="fa" [ngClass]="getFileIcon(f)"></i> -->
       <span title="{{ f.size | fileSize }} - {{f.title}}">{{f.title}}</span>
