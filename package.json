@@ -11,9 +11,8 @@
     "build-lib": "ng build ng-filemanager",
     "npm-pack": "cd dist/ng-filemanager && npm pack",
     "package": "npm run build-lib && npm run npm-pack"
-
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/animations": "^6.1.0",
     "@angular/common": "^6.1.0",
