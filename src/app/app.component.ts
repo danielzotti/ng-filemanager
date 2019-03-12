@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { IFileManagerFile } from 'projects/ng-filemanager/src/lib/ng-filemanager.models';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -8,14 +9,15 @@ import { IFileManagerFile } from 'projects/ng-filemanager/src/lib/ng-filemanager
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-component-library';
+  constructor(private http: HttpClient) {}
 
   isUploadingFiles = false;
   files: Array<IFileManagerFile> = null;
 
   onSubmitFiles(form: NgForm) {
-    console.log(form);
     if (form.invalid) {
+      alert('Form invalid! See console log for details');
+      console.log('Form invalid', form);
       return false;
     }
     this.isUploadingFiles = true;
@@ -31,11 +33,11 @@ export class AppComponent {
         formData.append('file' + i, files[i].browserFile);
       }
     }
-
-    setTimeout(() => {
+    const fakeUrl = 'http://www.mocky.io/v2/5c87748e320000d9123bd1fb';
+    this.http.post(fakeUrl, formData).subscribe(res => {
       this.isUploadingFiles = false;
-      alert('Done! See console log');
-      console.log(formData);
-    }, 2000);
+      alert('Done! See network details in developer console (Header of http://www.mocky.io/v2/5c87748e320000d9123bd1fb)');
+      form.reset();
+    });
   }
 }

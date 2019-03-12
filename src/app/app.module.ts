@@ -1,13 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { NgFilemanagerModule, NgFilemanagerComponent } from 'projects/ng-filemanager/src/public_api';
+import { NgFilemanagerModule } from 'projects/ng-filemanager/src/public_api';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, FormsModule, NgFilemanagerModule],
+  imports: [BrowserModule, HttpClientModule, FormsModule, NgFilemanagerModule],
   providers: [],
   bootstrap: [AppComponent]
 })
