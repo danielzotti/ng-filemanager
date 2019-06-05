@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, forwardRef, ViewChild, ElementRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, forwardRef, ViewChild, ElementRef, ContentChild, AfterContentInit } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl, NG_VALIDATORS, Validator } from '@angular/forms';
 import { FileSizePipe } from './file-size.pipe';
 import { IFileManager, IFileManagerFile, IFile } from './ng-filemanager.models';
@@ -21,34 +21,8 @@ const INPUT_FILE_CONTROL_VALIDATOR = {
   styles: ['./ng-filemanager.component.scss'],
   providers: [INPUT_FILE_CONTROL_ACCESSOR, INPUT_FILE_CONTROL_VALIDATOR, FileSizePipe]
 })
-export class NgFilemanagerComponent implements ControlValueAccessor, Validator {
+export class NgFilemanagerComponent implements ControlValueAccessor, Validator, AfterContentInit {
   constructor(private fileSizePipe: FileSizePipe) {}
-
-  @Input()
-  min: number = null;
-
-  @Input()
-  max: number = null;
-
-  @Input()
-  maxFileSize: number = null;
-
-  @Input()
-  acceptedFileTypes: Array<string> = null; // ['text/csv'];
-
-  @Input()
-  isLoading = false;
-
-  @Output()
-  filesChanged: EventEmitter<IFileManager> = new EventEmitter<IFileManager>();
-
-  @ViewChild('fileInput')
-  fileInput: ElementRef;
-
-  files: Array<IFileManagerFile> = [];
-  hasExceededMaxFileSize = false;
-  hasExceededMaxFileNumber = false;
-  hasExceededMinFileNumber = false;
 
   get fileManager(): IFileManager {
     return {
@@ -85,10 +59,65 @@ export class NgFilemanagerComponent implements ControlValueAccessor, Validator {
     return this.min !== 1 || this.max !== 1;
   }
 
+  @Input()
+  min: number = null;
+
+  @Input()
+  max: number = null;
+
+  @Input()
+  maxFileSize: number = null;
+
+  @Input()
+  acceptedFileTypes: Array<string> = null; // ['text/csv'];
+
+  @Input()
+  isLoading = false;
+
+  @Output()
+  filesChanged: EventEmitter<IFileManager> = new EventEmitter<IFileManager>();
+
+  @ViewChild('fileInput')
+  fileInput: ElementRef;
+
+  files: Array<IFileManagerFile> = [];
+  hasExceededMaxFileSize = false;
+  hasExceededMaxFileNumber = false;
+  hasExceededMinFileNumber = false;
+
   // ControlValueAccessor
 
   private onTouch: Function;
   private onModelChange: Function;
+
+  @ViewChild('selectIconRef') selectIcon: ElementRef;
+  @ViewChild('selectTextRef') selectText: ElementRef;
+  @ViewChild('deleteAllIconRef') deleteAllIcon: ElementRef;
+  @ViewChild('deleteAllTextRef') deleteAllText: ElementRef;
+  @ViewChild('deleteIconRef') deleteIcon: ElementRef;
+  hasSelectIcon = false;
+  hasSelectText = false;
+  hasDeleteAllIcon = false;
+  hasDeleteAllText = false;
+  hasDeleteIcon = false;
+
+  ngAfterContentInit() {
+    if (this.selectIcon && this.selectIcon.nativeElement) {
+      this.hasSelectIcon = this.selectIcon.nativeElement.childNodes.length > 0;
+    }
+    if (this.selectText && this.selectText.nativeElement) {
+      this.hasSelectText = this.selectText.nativeElement.childNodes.length > 0;
+    }
+    if (this.deleteAllIcon && this.deleteAllIcon.nativeElement) {
+      this.hasDeleteAllIcon = this.deleteAllIcon.nativeElement.childNodes.length > 0;
+    }
+    if (this.deleteAllText && this.deleteAllText.nativeElement) {
+      this.hasDeleteAllText = this.deleteAllText.nativeElement.childNodes.length > 0;
+    }
+    if (this.deleteIcon && this.deleteIcon.nativeElement) {
+      this.hasDeleteIcon = this.deleteIcon.nativeElement.childNodes.length > 0;
+    }
+  }
 
   registerOnChange(fn: any): void {
     this.onModelChange = fn;

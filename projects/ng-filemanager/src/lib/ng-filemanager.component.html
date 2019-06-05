@@ -1,38 +1,43 @@
-<div class="ng-filemanager-container">
-  <input #fileInput class="ng-filemanager-input" type="file" [attr.multiple]="isMultiple ? 'multiple': null" (change)="onFileChange()"
-         [accept]="acceptedFileTypes" style="display:none;" />
+<div class="ng-filemanager__container">
+  <input #fileInput class="ng-filemanager__input" type="file" [attr.multiple]="isMultiple ? 'multiple': null"
+         (change)="onFileChange()" [accept]="acceptedFileTypes" style="display:none;" />
 
   <!--BUTTONS-->
-  <div class="ng-filemanager-buttons">
-    <button type="button" class="ng-filemanager-button" [disabled]="isLoading" (click)="onOpenFileSelector()">
-      <span class="icon">
-        <i class="fa fa-folder-open"></i>
+  <div class="ng-filemanager__buttons-container">
+    <button type="button" class="ng-filemanager__button" [disabled]="isLoading" (click)="onOpenFileSelector()">
+      <span *ngIf="!hasSelectText && !hasSelectIcon">Select files(s)</span>
+      <span #selectIconRef>
+        <ng-content select="[selectIcon]"></ng-content>
       </span>
-      <span>
-        Select file(s)
+      <span #selectTextRef>
+        <ng-content select="[selectText]"></ng-content>
       </span>
     </button>
 
-    <button type="button" class="ng-filemanager-button" [disabled]="isLoading" (click)="onDeleteAllFiles()" *ngIf="isMultiple">
-      <span class="ng-filemanager-button-icon">
-        <i class="fa fa-trash"></i>
+    <button type="button" class="ng-filemanager__button" [disabled]="isLoading" (click)="onDeleteAllFiles()"
+            *ngIf="isMultiple && files && files.length > 0">
+      <!-- <span *ngIf="!hasDeleteAllText && !hasDeleteAllIcon">Delete all files</span> -->
+      <span #deleteAllIconRef>
+        <ng-content select="[deleteAllIcon]"></ng-content>
       </span>
-      <span>Delete all</span>
-      <span *ngIf="totalFileSize > 0">&nbsp;({{totalFileSize | fileSize}})</span>
+      <span #deleteAllTextRef>
+        <ng-content select="[deleteAllText]"></ng-content>
+      </span>
+      <span class="" *ngIf="totalFileSize > 0">&nbsp;({{totalFileSize | fileSize}})</span>
     </button>
   </div>
 
   <!-- FILE LIST -->
-  <div class="ng-filemanager-file-list" *ngIf="files && files.length > 0">
-    <div *ngFor="let f of files" class="ng-filemanager-file-item">
-      <button class="ng-filemanager-file-item-button" type="button" (click)="onDeleteFile(f)" [disabled]="isLoading">
-        <span class="ng-filemanager-file-item-button-icon">
-          &times;
-        </span>
+  <div class="ng-filemanager__file-list" *ngIf="files && files.length > 0">
+    <div *ngFor="let f of files" class="ng-filemanager__file">
+      <button class="ng-filemanager__file__button" type="button" (click)="onDeleteFile(f)" [disabled]="isLoading">
+        <!-- TODO ng-content -->
+        <!-- <ng-content select="[deleteIcon]"></ng-content> -->
+        <span>&times;</span>
       </button>
       <!-- <i class="fa" [ngClass]="getFileIcon(f)"></i> -->
-      <span title="{{ f.size | fileSize }} - {{f.title}}">{{f.title}}</span>
-      <span *ngIf="!isMultiple">&nbsp;({{ f.size | fileSize }})</span>
+      <span class="ng-filemanager__file__title" title="{{ f.size | fileSize }} - {{f.title}}">{{f.title}}</span>
+      <span class="ng-filemanager__file__size" *ngIf="!isMultiple">&nbsp;({{ f.size | fileSize }})</span>
     </div>
   </div>
 </div>

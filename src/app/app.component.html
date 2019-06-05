@@ -12,7 +12,21 @@
 <div>
   <form #form="ngForm" novalidate (submit)="onSubmitFiles(form)">
     <ng-filemanager [(ngModel)]="files" name="files" [min]="2" [max]="5" [maxFileSize]="1024000" #filesRef="ngModel"
-      [isLoading]="isUploadingFiles"></ng-filemanager>
+                    [isLoading]="isUploadingFiles">
+      <span selectText>
+        Seleziona i file
+      </span>
+      <span selectIcon>
+        <i class="fa fa-upload"></i>
+      </span>
+      <span deleteAllIcon>
+        <i class='fa fa-trash'></i>
+      </span>
+      <span deleteAllText>
+        Elimina tutti i file
+      </span>
+
+    </ng-filemanager>
     <div class="error-message" *ngIf="filesRef.dirty && filesRef.errors?.exactFileNumber">
       <span>you must upload a file</span>
     </div>
