@@ -12,7 +12,8 @@ export class AppComponent {
   constructor(private http: HttpClient) {}
 
   isUploadingFiles = false;
-  files: Array<IFileManagerFile> = null;
+  simpleFiles: Array<IFileManagerFile> = null;
+  customFiles: Array<IFileManagerFile> = null;
 
   onSubmitFiles(form: NgForm) {
     if (form.invalid) {

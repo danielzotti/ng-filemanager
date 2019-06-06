@@ -101,37 +101,11 @@ export class NgFilemanagerComponent implements ControlValueAccessor, Validator, 
   private onTouch: Function;
   private onModelChange: Function;
 
-  @ViewChild('selectIconRef') selectIcon: ElementRef;
-  @ViewChild('selectTextRef') selectText: ElementRef;
-  @ViewChild('deleteAllIconRef') deleteAllIcon: ElementRef;
-  @ViewChild('deleteAllTextRef') deleteAllText: ElementRef;
-  // @ViewChild('deleteIconRef') deleteIcon: ElementRef;
-  @ContentChild('deleteIconRef') deleteIcon: TemplateRef<any>;
-  // @ContentChild(TemplateRef) template: TemplateRef<any>;
-  hasSelectIcon = false;
-  hasSelectText = false;
-  hasDeleteAllIcon = false;
-  hasDeleteAllText = false;
-  hasDeleteIcon = false;
-
-  ngAfterContentInit() {
-    if (this.selectIcon && this.selectIcon.nativeElement) {
-      this.hasSelectIcon = this.selectIcon.nativeElement.childNodes.length > 0;
-    }
-    if (this.selectText && this.selectText.nativeElement) {
-      this.hasSelectText = this.selectText.nativeElement.childNodes.length > 0;
-    }
-    if (this.deleteAllIcon && this.deleteAllIcon.nativeElement) {
-      this.hasDeleteAllIcon = this.deleteAllIcon.nativeElement.childNodes.length > 0;
-    }
-    if (this.deleteAllText && this.deleteAllText.nativeElement) {
-      this.hasDeleteAllText = this.deleteAllText.nativeElement.childNodes.length > 0;
-    }
-    // if (this.deleteIcon && this.deleteIcon.nativeElement) {
-    //   this.hasDeleteIcon = this.deleteIcon.nativeElement.childNodes.length > 0;
-    // }
-    console.log(this.deleteIcon);
-  }
+  @ContentChild('selectIcon') selectIcon: ElementRef;
+  @ContentChild('selectText') selectText: ElementRef;
+  @ContentChild('deleteAllIcon') deleteAllIcon: ElementRef;
+  @ContentChild('deleteAllText') deleteAllText: ElementRef;
+  @ContentChild('deleteIcon') deleteIcon: TemplateRef<any>;
 
   registerOnChange(fn: any): void {
     this.onModelChange = fn;

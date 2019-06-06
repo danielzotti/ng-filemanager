@@ -6,43 +6,51 @@
   In this example:
 </p>
 <ul>
-  <li>Min 2 files</li>
-  <li>Max 1MB total size</li>
+  <li>SIMPLE: no limitation</li>
+  <li>CUSTOM: Min 2 files</li>
+  <li>CUSTOM: Max 1MB total size</li>
 </ul>
 <div>
   <form #form="ngForm" novalidate (submit)="onSubmitFiles(form)">
-    <ng-filemanager [(ngModel)]="files" name="files" [min]="2" [max]="5" [maxFileSize]="1024000" #filesRef="ngModel"
-                    [isLoading]="isUploadingFiles">
-      <span selectText>
-        Seleziona i file
-      </span>
+    <!-- SIMPLE ng-filemanager -->
+    <h3>SIMPLE ng-filemanager</h3>
+    <ng-filemanager [(ngModel)]="simpleFiles" name="simpleFiles" [isLoading]="isUploadingFiles">
+      <!-- #filesRef="ngModel" -->
+      <!-- [min]="2" [max]="5" [maxFileSize]="1024000" -->
+    </ng-filemanager>
 
-      <span selectIcon>
+    <!-- CUSTOM ng-filemanager-->
+    <h3>CUSTOM ng-filemanager</h3>
+    <ng-filemanager [(ngModel)]="customFiles" name="customFiles" [min]="2" [max]="5" [maxFileSize]="1024000"
+                    #customFilesRef="ngModel" [isLoading]="isUploadingFiles">
+      <ng-template #selectText>
+        <span>Seleziona i file</span>
+      </ng-template>
+      <ng-template #selectIcon>
         <i class="fa fa-upload"></i>
-      </span>
-      <span deleteAllIcon>
+      </ng-template>
+      <ng-template #deleteAllIcon>
         <i class='fa fa-trash'></i>
-      </span>
-      <span deleteAllText>
-        Elimina tutti i file
-      </span>
-      <ng-template #deleteIconRef>
-        <span>
-          <i class="fa fa-trash"></i>
-        </span>
+      </ng-template>
+      <ng-template #deleteAllText>
+        <span>Elimina tutti i file</span>
+      </ng-template>
+      <ng-template #deleteIcon>
+        <i class="fa fa-trash"></i>
       </ng-template>
 
     </ng-filemanager>
-    <div class="error-message" *ngIf="filesRef.dirty && filesRef.errors?.exactFileNumber">
+
+    <div class="error-message" *ngIf="customFilesRef.dirty && customFilesRef.errors?.exactFileNumber">
       <span>you must upload a file</span>
     </div>
-    <div class="error-message" *ngIf="filesRef.dirty && filesRef.errors?.minFileNumber">
+    <div class="error-message" *ngIf="customFilesRef.dirty && customFilesRef.errors?.minFileNumber">
       <span>you must upload at least 2 files</span>
     </div>
-    <div class="error-message" *ngIf="filesRef.dirty && filesRef.errors?.maxFileNumber">
+    <div class="error-message" *ngIf="customFilesRef.dirty && customFilesRef.errors?.maxFileNumber">
       <span>you cannot upload more than 5 files</span>
     </div>
-    <div class="error-message" *ngIf="filesRef.dirty && filesRef.errors?.maxFileSize">
+    <div class="error-message" *ngIf="customFilesRef.dirty && customFilesRef.errors?.maxFileSize">
       <span>you cannot upload more than 1MB</span>
     </div>
 
