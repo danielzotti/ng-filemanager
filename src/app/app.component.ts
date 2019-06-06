@@ -12,6 +12,7 @@ export class AppComponent {
   constructor(private http: HttpClient) {}
 
   isUploadingFiles = false;
+  files: Array<IFileManagerFile> = null;
   simpleFiles: Array<IFileManagerFile> = null;
   customFiles: Array<IFileManagerFile> = null;
   completeFiles: Array<IFileManagerFile> = null;
@@ -26,7 +27,7 @@ export class AppComponent {
 
     const formData: FormData = new FormData();
 
-    const files = form.value.files;
+    const files = form.value.completeFiles;
 
     formData.append('payload', JSON.stringify({ title: 'test' }));
 

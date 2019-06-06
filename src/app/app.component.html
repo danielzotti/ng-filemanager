@@ -1,7 +1,13 @@
 <div class="container">
   <h1>
-    ng-filemanager
+    @danielzotti/ng-filemanager
   </h1>
+  <div class="description">
+    <p>It's a special angular component that replaces multiple file input and completely customizable</p>
+    <p>As simple as → <ng-filemanager [(ngModel)]="files" name="files"></ng-filemanager>
+    </p>
+  </div>
+  <h2>How it works</h2>
   <p>Open developer console</p>
   <p>
     In this example:
@@ -10,9 +16,12 @@
     <li>SIMPLE: no limitation</li>
     <li>CUSTOM: no limitation</li>
     <li>COMPLETE: Min 2 files, Max 1MB total size</li>
+    <li>UPLOAD: only files under "COMPLETE" are uploaded</li>
   </ul>
-  <div>
+  <div class="example-with-style">
     <form #form="ngForm" novalidate (submit)="onSubmitFiles(form)">
+      <h2 class="section-title">With custom style</h2>
+
       <!-- SIMPLE ng-filemanager -->
       <h3>SIMPLE ng-filemanager</h3>
       <ng-filemanager [(ngModel)]="simpleFiles" name="simpleFiles" [isLoading]="isUploadingFiles"></ng-filemanager>
@@ -78,4 +87,61 @@
 
     </form>
   </div>
+
+  <div class="example-without-style">
+    <form #form="ngForm" novalidate (submit)="onSubmitFiles(form)">
+      <h2 class="section-title">Without style</h2>
+      <!-- SIMPLE ng-filemanager -->
+      <h3>SIMPLE ng-filemanager</h3>
+      <ng-filemanager [(ngModel)]="simpleFiles" name="simpleFiles" [isLoading]="isUploadingFiles"></ng-filemanager>
+
+      <!-- CUSTOM ng-filemanager-->
+      <h3>CUSTOM ng-filemanager</h3>
+      <ng-filemanager [(ngModel)]="customFiles" name="customFiles" #customFilesRef="ngModel"
+                      [isLoading]="isUploadingFiles">
+        <ng-template #selectIcon>
+          <i class="fa fa-upload"></i>
+        </ng-template>
+        <ng-template #deleteAllIcon>
+          <i class='fa fa-eraser'></i>
+        </ng-template>
+      </ng-filemanager>
+
+      <!-- COMPLETE ng-filemanager-->
+      <h3>COMPLETE ng-filemanager</h3>
+      <ng-filemanager [(ngModel)]="completeFiles" name="completeFiles" [min]="2" [max]="5" [maxFileSize]="1024000"
+                      #completeFilesRef="ngModel" [isLoading]="isUploadingFiles">
+        <ng-template #selectText>
+          <span>Browse files</span>
+        </ng-template>
+        <ng-template #selectIcon>
+          <i class="fa fa-files-o"></i>&nbsp;
+        </ng-template>
+        <ng-template #deleteAllIcon>
+          <i class='fa fa-trash'></i>&nbsp;
+        </ng-template>
+        <ng-template #deleteAllText>
+          <span>Delete all files</span>
+        </ng-template>
+        <ng-template #deleteIcon>
+          <i class="fa fa-trash"></i>
+        </ng-template>
+
+      </ng-filemanager>
+
+      <div class="error-message" *ngIf="completeFilesRef.dirty && completeFilesRef.errors?.exactFileNumber">
+        <span>you must upload a file</span>
+      </div>
+      <div class="error-message" *ngIf="completeFilesRef.dirty && completeFilesRef.errors?.minFileNumber">
+        <span>you must upload at least 2 files</span>
+      </div>
+      <div class="error-message" *ngIf="completeFilesRef.dirty && completeFilesRef.errors?.maxFileNumber">
+        <span>you cannot upload more than 5 files</span>
+      </div>
+      <div class="error-message" *ngIf="completeFilesRef.dirty && completeFilesRef.errors?.maxFileSize">
+        <span>you cannot upload more than 1MB</span>
+      </div>
+    </form>
+  </div>
+
 </div>

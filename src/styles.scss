@@ -3,7 +3,11 @@
 html {
   font-family: "Exo";
 }
-// CUSTOM STYLES
+form {
+  padding: 50px;
+  margin: 50px auto;
+  border-radius: 5px;
+}
 .container {
   max-width: 500px;
   margin: 0 auto;
@@ -18,58 +22,74 @@ html {
   margin-bottom: 5px;
   cursor: pointer;
 }
-
-form {
-  padding: 50px;
-  margin: 50px auto;
-  background-color: black;
-  color: white;
-  border-radius: 5px;
+.section-title {
+  text-transform: uppercase;
+}
+.buttons {
+  margin-top: 30px;
 }
 
-// ng-filemanager STYLES
-.ng-filemanager__container {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  &::after {
-    display: block;
-    content: "";
-    clear: both;
+.description {
+  ng-filemanager {
+    display: inline-block;
   }
 }
 
-.ng-filemanager__input {
-  display: none;
-}
-
-.ng-filemanager__buttons-container {
-}
-
-.ng-filemanager__button {
-  @extend .default-button;
-
-  &:last-of-type {
-    margin-right: 0;
+.example-without-style {
+  form {
+    border: 1px solid black;
   }
 }
+.example-with-style {
+  form {
+    color: white;
+    background-color: black;
+  }
 
-.ng-filemanager__button__icon {
-  margin-right: 10px;
-}
+  // ng-filemanager STYLES
+  .ng-filemanager__container {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    &::after {
+      display: block;
+      content: "";
+      clear: both;
+    }
+  }
 
-.ng-filemanager__file-list {
-}
+  .ng-filemanager__input {
+    display: none;
+  }
 
-.ng-filemanager__file {
-  font-size: 0.75em;
-}
+  .ng-filemanager__buttons-container {
+  }
 
-.ng-filemanager__file__button {
-  background: transparent;
-  border: 0;
-  color: white;
-  cursor: pointer;
-}
+  .ng-filemanager__button {
+    @extend .default-button;
 
-.ng-filemanager__file__button__icon {
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+
+  .ng-filemanager__button__icon {
+    margin-right: 10px;
+  }
+
+  .ng-filemanager__file-list {
+  }
+
+  .ng-filemanager__file {
+    font-size: 0.75em;
+  }
+
+  .ng-filemanager__file__button {
+    background: transparent;
+    border: 0;
+    color: white;
+    cursor: pointer;
+  }
+
+  .ng-filemanager__file__button__icon {
+  }
 }
