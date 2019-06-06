@@ -1,4 +1,15 @@
-import { Component, Input, Output, EventEmitter, forwardRef, ViewChild, ElementRef, ContentChild, AfterContentInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  forwardRef,
+  ViewChild,
+  ElementRef,
+  ContentChild,
+  AfterContentInit,
+  TemplateRef
+} from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl, NG_VALIDATORS, Validator } from '@angular/forms';
 import { FileSizePipe } from './file-size.pipe';
 import { IFileManager, IFileManagerFile, IFile } from './ng-filemanager.models';
@@ -94,7 +105,9 @@ export class NgFilemanagerComponent implements ControlValueAccessor, Validator, 
   @ViewChild('selectTextRef') selectText: ElementRef;
   @ViewChild('deleteAllIconRef') deleteAllIcon: ElementRef;
   @ViewChild('deleteAllTextRef') deleteAllText: ElementRef;
-  @ViewChild('deleteIconRef') deleteIcon: ElementRef;
+  // @ViewChild('deleteIconRef') deleteIcon: ElementRef;
+  @ContentChild('deleteIconRef') deleteIcon: TemplateRef<any>;
+  // @ContentChild(TemplateRef) template: TemplateRef<any>;
   hasSelectIcon = false;
   hasSelectText = false;
   hasDeleteAllIcon = false;
@@ -114,9 +127,10 @@ export class NgFilemanagerComponent implements ControlValueAccessor, Validator, 
     if (this.deleteAllText && this.deleteAllText.nativeElement) {
       this.hasDeleteAllText = this.deleteAllText.nativeElement.childNodes.length > 0;
     }
-    if (this.deleteIcon && this.deleteIcon.nativeElement) {
-      this.hasDeleteIcon = this.deleteIcon.nativeElement.childNodes.length > 0;
-    }
+    // if (this.deleteIcon && this.deleteIcon.nativeElement) {
+    //   this.hasDeleteIcon = this.deleteIcon.nativeElement.childNodes.length > 0;
+    // }
+    console.log(this.deleteIcon);
   }
 
   registerOnChange(fn: any): void {
