@@ -13,6 +13,11 @@
     "themable",
     "customizable"
   ],
+  "description": "It's a special angular component that replaces multiple file input. Furthermore it's completely customizable",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danielzotti/ng-filemanager"
+  },
   "peerDependencies": {
     "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
     "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
