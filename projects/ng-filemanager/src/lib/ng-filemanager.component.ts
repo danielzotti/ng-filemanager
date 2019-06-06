@@ -32,7 +32,7 @@ const INPUT_FILE_CONTROL_VALIDATOR = {
   styles: ['./ng-filemanager.component.scss'],
   providers: [INPUT_FILE_CONTROL_ACCESSOR, INPUT_FILE_CONTROL_VALIDATOR, FileSizePipe]
 })
-export class NgFilemanagerComponent implements ControlValueAccessor, Validator, AfterContentInit {
+export class NgFilemanagerComponent implements ControlValueAccessor, Validator {
   constructor(private fileSizePipe: FileSizePipe) {}
 
   get fileManager(): IFileManager {
