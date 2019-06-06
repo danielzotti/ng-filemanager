@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   constructor(private http: HttpClient) {}
@@ -14,6 +14,7 @@ export class AppComponent {
   isUploadingFiles = false;
   simpleFiles: Array<IFileManagerFile> = null;
   customFiles: Array<IFileManagerFile> = null;
+  completeFiles: Array<IFileManagerFile> = null;
 
   onSubmitFiles(form: NgForm) {
     if (form.invalid) {

@@ -1,59 +1,57 @@
-$ng-filemanager-container-margin: 5px;
-$ng-filemanager-btn-margin: 5px;
-$ng-filemanager-icon-margin-right: 5px;
-$ng-filemanager-item-file-margin-bottom: 5px;
-$ng-filemanager-item-file-font-size: 12px;
+// :host {
+//   position: relative;
+// }
 
-:host {
-  position: relative;
-}
+// .ng-filemanager__default-button {
+//   border: 1px solid black;
+//   border-radius: 3px;
+//   padding: 5px 10px;
+//   background-color: white;
+//   display: inline-block;
+//   margin-right: 5px;
+//   margin-bottom: 5px;
+// }
 
-.ng-filemanager-container {
-  margin-top: $ng-filemanager-container-margin;
-  margin-bottom: $ng-filemanager-container-margin;
+// .ng-filemanager__container {
+//   margin-top: 5px;
+//   margin-bottom: 5px;
+//   &::after {
+//     display: block;
+//     content: "";
+//     clear: both;
+//   }
+// }
 
-  &::after {
-    display: block;
-    content: "";
-    clear: both;
-  }
-}
+// .ng-filemanager__input {
+//   display: none;
+// }
 
-.ng-filemanager__input {
-  display: none;
-}
+// .ng-filemanager__buttons-container {
+// }
 
-.ng-filemanager__buttons-container {
-}
+// .ng-filemanager__button {
+//   @extend .ng-filemanager__default-button;
 
-.ng-filemanager__button {
-  display: inline-block;
-  margin-right: $ng-filemanager-btn-margin;
-  margin-top: $ng-filemanager-btn-margin;
-  margin-bottom: $ng-filemanager-btn-margin;
+//   &:last-of-type {
+//     margin-right: 0;
+//   }
+// }
 
-  .ng-filemanager__button__icon {
-    margin-right: $ng-filemanager-icon-margin-right;
-  }
+// .ng-filemanager__button__icon {
+//   margin-right: 10px;
+// }
 
-  &:last-of-type {
-    margin-right: 0;
-  }
-}
+// .ng-filemanager__file-list {
+// }
 
-.ng-filemanager__file-list {
-}
+// .ng-filemanager__file {
+//   font-size: 0.75em;
+// }
 
-.ng-filemanager__file {
-  font-size: $ng-filemanager-item-file-font-size;
-  margin-bottom: $ng-filemanager-item-file-margin-bottom;
-}
+// .ng-filemanager__file__button {
+//   background: transparent;
+//   border: 0;
+// }
 
-.ng-filemanager__file__button {
-  background: transparent;
-  border: 0;
-  cursor: pointer;
-}
-
-.ng-filemanager__file__button__icon {
-}
+// .ng-filemanager__file__button__icon {
+// }
