@@ -1,5 +1,7 @@
 # @danielzotti/ng-filemanager
 
+Fully customizable multiple file input for Angular with >= IE10 browser support (remember to activate polyfills in `polyfills.ts`!)
+
 - [Live demo](https://danielzotti.github.io/ng-filemanager)
 
 - [NPM](https://www.npmjs.com/package/@danielzotti/ng-filemanager)

@@ -1,5 +1,7 @@
 # @danielzotti/ng-filemanager
 
+Fully customizable multiple file manager for Angular with >= IE10 browser support!
+
 ## Demo
 
 Live demo on github --> https://danielzotti.github.io/ng-filemanager
