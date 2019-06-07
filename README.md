@@ -1,6 +1,6 @@
 # ng-filemanager
 
-- [EXAMPLE](https://danielzotti.github.io/ng-filemanager/docs/)
+- [EXAMPLE](https://danielzotti.github.io/ng-filemanager)
 - [NPM](https://www.npmjs.com/package/@danielzotti/ng-filemanager)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.8.
