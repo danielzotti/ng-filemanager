@@ -1,13 +1,8 @@
 # @danielzotti/ng-filemanager
 
-- [Live demo](https://danielzotti.github.io/ng-filemanager)
+## Demo
 
-- [NPM](https://www.npmjs.com/package/@danielzotti/ng-filemanager)
-
-- Try it yourself:
-  - Run `npm install`
-  - Run `npm run start` for a dev server
-  - Navigate to `http://localhost:4200/`
+Live demo on github --> https://danielzotti.github.io/ng-filemanager
 
 # How to use it
 
