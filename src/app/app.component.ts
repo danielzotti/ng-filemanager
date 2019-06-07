@@ -36,10 +36,10 @@ export class AppComponent {
         formData.append('file' + i, files[i].browserFile);
       }
     }
-    const fakeUrl = 'http://www.mocky.io/v2/5c87748e320000d9123bd1fb';
+    const fakeUrl = 'https://www.mocky.io/v2/5c87748e320000d9123bd1fb';
     this.http.post(fakeUrl, formData).subscribe(res => {
       this.isUploadingFiles = false;
-      alert('Done! See network details in developer console (Header of http://www.mocky.io/v2/5c87748e320000d9123bd1fb)');
+      alert('Done! See network details in developer console (Header of https://www.mocky.io/v2/5c87748e320000d9123bd1fb)');
       form.reset();
     });
   }
