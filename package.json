@@ -9,6 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build-lib": "ng build ng-filemanager",
+    "build-docs": "ng build --prod --output-path docs --base-href ng-filemanager",
     "npm-pack": "cd dist/ng-filemanager && npm pack",
     "package": "npm run build-lib && npm run npm-pack"
   },
