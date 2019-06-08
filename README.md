@@ -109,7 +109,7 @@ export class AppModule {}
 
   <div class="buttons">
     <button type="submit" class="default-button" [disabled]="form.invalid || isUploadingFiles">
-      Update
+      Upload
       <span *ngIf="isUploadingFiles">
         (loading...)
       </span>

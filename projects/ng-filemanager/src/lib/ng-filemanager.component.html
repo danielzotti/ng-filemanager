@@ -5,7 +5,7 @@
   <!--BUTTONS-->
   <div class="ng-filemanager__buttons-container">
     <button type="button" class="ng-filemanager__button" [disabled]="isLoading" (click)="onOpenFileSelector()">
-      <span *ngIf="!selectIcon && !selectText">Select files(s)</span>
+      <span class="ng-filemanager__button__default-text" *ngIf="!selectIcon && !selectText">Select files(s)</span>
       <ng-container *ngIf="selectIcon" [ngTemplateOutlet]="selectIcon"></ng-container>
       <ng-container *ngIf="selectText" [ngTemplateOutlet]="selectText"></ng-container>
     </button>
@@ -14,8 +14,8 @@
             *ngIf="isMultiple && files && files.length > 0">
       <ng-container *ngIf="deleteAllIcon" [ngTemplateOutlet]="deleteAllIcon"></ng-container>
       <ng-container *ngIf="deleteAllText" [ngTemplateOutlet]="deleteAllText"></ng-container>
-      <span *ngIf="!deleteAllText && !deleteAllIcon">Delete all files</span>
-      <span class="" *ngIf="totalFileSize > 0">&nbsp;({{totalFileSize | fileSize}})</span>
+      <span class="ng-filemanager__button__default-text" *ngIf="!deleteAllText && !deleteAllIcon">Delete all files</span>
+      <span class="ng-filemanager__button__file-size" *ngIf="totalFileSize > 0">({{totalFileSize | fileSize}})</span>
     </button>
   </div>
 
@@ -27,7 +27,7 @@
         <span *ngIf="!deleteIcon">&times;</span>
       </button>
       <span class="ng-filemanager__file__title" title="{{ f.size | fileSize }} - {{f.title}}">{{f.title}}</span>
-      <span class="ng-filemanager__file__size" *ngIf="!isMultiple">&nbsp;({{ f.size | fileSize }})</span>
+      <span class="ng-filemanager__file__size" *ngIf="!isMultiple">({{ f.size | fileSize }})</span>
     </div>
   </div>
 </div>

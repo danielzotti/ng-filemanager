@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Exo:400,700&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swap');
 
 html {
   font-family: "Exo";
@@ -92,4 +93,100 @@ form {
 
   .ng-filemanager__file__button__icon {
   }
+}
+
+.custom-style {
+  // ng-filemanager STYLES
+  font-family: "Indie Flower";
+
+  .ng-filemanager__container {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    &::after {
+      display: block;
+      content: "";
+      clear: both;
+    }
+  }
+
+  .ng-filemanager__input {
+    display: none;
+  }
+
+  .ng-filemanager__buttons-container {
+    margin-bottom: 10px;
+  }
+
+  .ng-filemanager__button {
+    display: inline-block;
+    background-color:rgb(53, 116, 218);
+    color:white;
+    width:50px;
+    height:50px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 30px;
+    border-radius: 50%;
+    outline: none;
+    i {
+      vertical-align: middle;
+      display: inline-block;
+    }
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+    &:hover {
+      .ng-filemanager__button__file-size {
+        &:before {
+          content:'Delete all files. Total size ';
+        }
+        position: absolute;
+        display: inline-block;
+        background-color:white;
+        color:black;
+        padding:3px;
+        font-size: 10px;
+        line-height: 1;
+      }
+    }
+    
+  }
+  .ng-filemanager__button__file-size {
+    display: none;
+  }
+
+  .ng-filemanager__button__default-text {}
+
+  .ng-filemanager__file-list {
+  }
+
+  .ng-filemanager__file {
+    position: relative;
+    padding:15px;
+    background-color:rgb(53, 116, 218);
+    font-size: 1.2em;
+    display:block;
+    width: 100%;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    .ng-filemanager__file__button {
+      position: absolute;
+      top:5px;
+      right:5px;
+    }
+  }
+
+  .ng-filemanager__file__button {
+    background: transparent;
+    border: 0;
+    color: white;
+    cursor: pointer;
+  }
+
+  .ng-filemanager__file__button__icon {
+  }
+
 }

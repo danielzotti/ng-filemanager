@@ -28,7 +28,7 @@
 
       <!-- CUSTOM ng-filemanager-->
       <h3>CUSTOM ng-filemanager</h3>
-      <ng-filemanager [(ngModel)]="customFiles" name="customFiles" #customFilesRef="ngModel"
+      <ng-filemanager class="custom-style" [(ngModel)]="customFiles" name="customFiles" #customFilesRef="ngModel"
                       [isLoading]="isUploadingFiles">
         <ng-template #selectIcon>
           <i class="fa fa-upload"></i>
@@ -36,6 +36,9 @@
         <ng-template #deleteAllIcon>
           <i class='fa fa-eraser'></i>
         </ng-template>
+        <ng-template #deleteIcon>
+            <i class="fa fa-times"></i>
+          </ng-template>
       </ng-filemanager>
 
       <!-- COMPLETE ng-filemanager-->
@@ -75,7 +78,7 @@
 
       <div class="buttons">
         <button type="submit" class="default-button" [disabled]="form.invalid || isUploadingFiles">
-          Update
+          Upload
           <span *ngIf="isUploadingFiles">
             (loading...)
           </span>
