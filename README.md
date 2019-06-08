@@ -42,9 +42,10 @@ export class AppModule {}
 ## Use it in a component
 
 ### Basic template
+- Easy to use
+- No validation or file size/number limitation
 
 ```html
-- Easy to use - No validation or file size/number limitation
 <form #form="ngForm" novalidate (submit)="onSubmitFiles(form)">
   <ng-filemanager [(ngModel)]="files" name="files"></ng-filemanager>
   <button>Submit</button>
